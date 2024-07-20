@@ -1,6 +1,7 @@
 package br.com.isiflix.salutar.service.ficha;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,30 +18,38 @@ public class FichaServiceImpl implements IFichaService {
 	@Override
 	public FichaPaciente cadastrar(FichaPaciente nova) {
 		// TODO Auto-generated method stub
-		return null;
+		nova.setUuid(UUID.randomUUID().toString());
+		nova.setAtivo(1);
+		return dao.save(nova);
 	}
 
 	@Override
 	public FichaPaciente alterar(FichaPaciente ficha) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.save(ficha);
 	}
 
 	@Override
-	public List<FichaPaciente> buscarPorNome(FichaPaciente nome) {
+	public List<FichaPaciente> buscarPorNome(String nome) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findByNomePacienteContaining(nome);
 	}
 
 	@Override
 	public FichaPaciente recuperarPeloId(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findById(id).orElse(null);
 	}
 
 	@Override
 	public boolean excluir(Integer id) {
 		// TODO Auto-generated method stub
+		FichaPaciente ficha = recuperarPeloId(id);
+		if (ficha != null) {
+			ficha.setAtivo(0);
+			dao.save(ficha);
+			return true;
+		}
 		return false;
 	}
 
