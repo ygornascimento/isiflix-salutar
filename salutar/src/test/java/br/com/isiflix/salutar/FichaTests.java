@@ -31,7 +31,7 @@ public class FichaTests {
 	
 	@Test
 	public void shouldDeleteFicha() {
-		assertTrue(service.excluir(1));
+		assertTrue(service.excluir(10));
 	}
 	
 	@Test
