@@ -1,12 +1,17 @@
 package br.com.isiflix.salutar.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -76,9 +81,21 @@ public class FichaPaciente {
 	
 	@Column(name="ativo")
 	private Integer ativo;
+	
+	@OneToMany(mappedBy="ficha", cascade=CascadeType.ALL)
+	@JsonIgnoreProperties("ficha")
+	private List<Midia> midias;
 
 	public Integer getIdFicha() {
 		return idFicha;
+	}
+
+	public List<Midia> getMidias() {
+		return midias;
+	}
+
+	public void setMidias(List<Midia> midias) {
+		this.midias = midias;
 	}
 
 	public void setIdFicha(Integer idFicha) {
