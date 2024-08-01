@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +20,11 @@ public class UploadServiceImpl implements IUploadService {
 		try {
 			System.out.println("DEBUG - Realizando Upload do arquivo: "+file.getOriginalFilename());
 			String destinationFolder = "/Users/ynascimento/workspace";
-			Path path = Paths.get(destinationFolder+ File.separator + file.getOriginalFilename());
+			String extension  = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+			String newFileName = UUID.randomUUID().toString()+extension;
+			
+			
+			Path path = Paths.get(destinationFolder+ File.separator + newFileName);
 			Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 			
 			return file.getOriginalFilename();
