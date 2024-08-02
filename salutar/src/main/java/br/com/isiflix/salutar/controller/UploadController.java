@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.isiflix.salutar.dto.PathToFile;
 import br.com.isiflix.salutar.service.upload.IUploadService;
 
 @RestController
@@ -21,7 +22,7 @@ public class UploadController {
 	public ResponseEntity<?> uploadFiles(@RequestParam(name="file") MultipartFile file) {
 		String filename = service.uploadFile(file);
 		if (filename != null) {
-			return ResponseEntity.status(201).body("Upload com sucesso!");
+			return ResponseEntity.status(201).body(new PathToFile(filename));
 		}
 		
 		return ResponseEntity.badRequest().build();

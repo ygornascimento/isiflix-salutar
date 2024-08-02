@@ -27,7 +27,7 @@ public class UploadServiceImpl implements IUploadService {
 			Path path = Paths.get(destinationFolder+ File.separator + newFileName);
 			Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 			
-			return file.getOriginalFilename();
+			return newFileName;
 			
 		} catch(IOException ex) {
 			ex.printStackTrace();
