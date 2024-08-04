@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.isiflix.salutar.model.Usuario;
+import br.com.isiflix.salutar.security.SalutarToken;
 import br.com.isiflix.salutar.service.auth.IAuthService;
 
 @RestController
@@ -24,5 +25,14 @@ public class AuthController {
 		}
 		
 		return ResponseEntity.badRequest().build();
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<SalutarToken> efetuarLogin(@RequestBody Usuario dadosLogin) {
+		SalutarToken token = service.realizarLogin(dadosLogin);
+		if (token != null) {
+			return ResponseEntity.ok(token);
+		}
+		return ResponseEntity.status(403).build();
 	}
 }
