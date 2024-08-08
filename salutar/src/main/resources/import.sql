@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `db_salutar`.`tbl_fichapaciente` (
   `nome_usuario` VARCHAR(45) NOT NULL,
   `login` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id_usuario`))
 
 insert into tbl_fichapaciente (id_ficha, nome, data_nasc, sexo, uuid) values (10, 'Professor Isidro', '1978-10-04', 'M', 'abc');

@@ -25,6 +25,7 @@ public class Usuario {
 	@Column(name="senha", length=100)
 	private String senha;
 	
+	@Column(name="email", length=200)
 	private String email;
 
 	public Integer getId() {
