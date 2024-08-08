@@ -24,6 +24,8 @@ public class Usuario {
 	
 	@Column(name="senha", length=100)
 	private String senha;
+	
+	private String email;
 
 	public Integer getId() {
 		return id;
@@ -55,5 +57,22 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public static Usuario fromString(String str) {
+		String fields[] = str.split(";");
+		Usuario user = new Usuario();
+		user.setId(Integer.parseInt(fields[0]));
+		user.setLogin(fields[1]);
+		user.setEmail(fields[2]);
+		return user;
 	}
 }
