@@ -1,5 +1,8 @@
 package br.com.isiflix.salutar.service.auth;
 
+import br.com.isiflix.salutar.security.IsiToken;
+import br.com.isiflix.salutar.security.TokenService;
+import br.com.isiflix.salutar.security.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -32,7 +35,7 @@ public class AuthServiceImpl implements IAuthService {
 		
 		if (res != null) {
 			if (encoder.matches(dadosLogin.getSenha(), res.getSenha())) {
-				return new SalutarToken("isidro123");
+				return TokenUtil.encode(res);
 			}
 		}
 		return null;
