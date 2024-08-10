@@ -7,11 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import br.com.isiflix.salutar.model.FichaPaciente;
 import br.com.isiflix.salutar.service.ficha.IFichaService;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class FichaTests {
 	
 	@Autowired
@@ -29,7 +31,7 @@ public class FichaTests {
 	
 	@Test
 	public void shouldDeleteFicha() {
-		assertTrue(service.excluir(1));
+		assertTrue(service.excluir(10));
 	}
 	
 	@Test
