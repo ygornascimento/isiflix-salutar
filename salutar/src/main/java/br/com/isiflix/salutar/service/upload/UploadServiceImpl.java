@@ -21,7 +21,7 @@ public class UploadServiceImpl implements IUploadService {
 			System.out.println("DEBUG - Realizando Upload do arquivo: "+file.getOriginalFilename());
 			String destinationFolder = "/Users/ynascimento/workspace";
 			String extension  = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-			String newFileName = UUID.randomUUID().toString()+extension;
+			String newFileName = UUID.randomUUID() +extension;
 			
 			
 			Path path = Paths.get(destinationFolder+ File.separator + newFileName);

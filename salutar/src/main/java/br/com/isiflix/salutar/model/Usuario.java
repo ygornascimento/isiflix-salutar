@@ -69,7 +69,7 @@ public class Usuario {
 	}
 	
 	public static Usuario fromString(String str) {
-		String fields[] = str.split(";");
+		String[] fields = str.split(";");
 		Usuario user = new Usuario();
 		user.setId(Integer.parseInt(fields[0]));
 		user.setLogin(fields[1]);

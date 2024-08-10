@@ -31,7 +31,7 @@ public class TokenUtil {
 
     public static final String ISSUER   = "*IsiFLIX*";
 
-    public static final String SECRET_KEY = "0123456789012345678901234567890123";
+    public static final String SECRET_KEY = "01234567890123456789012345678901";
 
     public static final String PREFIX = "Bearer ";
 
@@ -43,12 +43,14 @@ public class TokenUtil {
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
-        return new SalutarToken(PREFIX + jws);
+        return new SalutarToken(jws);
     }
 
     public static Authentication decode(HttpServletRequest request) throws ServletException, IOException {
         String token = request.getHeader("Authorization");
-        token = token.replace(PREFIX, "");  // simplesmente retiro a palavar BEARER
+//        token = token.replace(PREFIX, "");  // simplesmente retiro a palavar BEARER
+        token = token.replace("Bearer \"", "");
+        token = token.replaceAll("\"", "");
         Jws<Claims> claims;
         claims = Jwts.parserBuilder().setSigningKey(SECRET_KEY.getBytes()).build()
                 .parseClaimsJws(token);

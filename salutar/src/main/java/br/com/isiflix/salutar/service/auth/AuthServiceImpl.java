@@ -1,7 +1,5 @@
 package br.com.isiflix.salutar.service.auth;
 
-import br.com.isiflix.salutar.security.IsiToken;
-import br.com.isiflix.salutar.security.TokenService;
 import br.com.isiflix.salutar.security.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,5 +38,4 @@ public class AuthServiceImpl implements IAuthService {
 		}
 		return null;
 	}
-	
 }
