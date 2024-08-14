@@ -11,8 +11,8 @@ import br.com.isiflix.salutar.model.Usuario;
 import br.com.isiflix.salutar.security.SalutarToken;
 import br.com.isiflix.salutar.service.auth.IAuthService;
 
+@CrossOrigin
 @RestController
-@CrossOrigin("*")
 public class AuthController {
 	@Autowired
 	private IAuthService service;
@@ -26,7 +26,7 @@ public class AuthController {
 		
 		return ResponseEntity.badRequest().build();
 	}
-	
+
 	@PostMapping("/login")
 	public ResponseEntity<SalutarToken> efetuarLogin(@RequestBody Usuario dadosLogin) {
 		SalutarToken token = service.realizarLogin(dadosLogin);
