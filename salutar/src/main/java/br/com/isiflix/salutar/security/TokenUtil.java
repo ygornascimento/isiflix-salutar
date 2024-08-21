@@ -27,7 +27,7 @@ public class TokenUtil {
     public static final long MINUTOS    = 60 * SEGUNDOS;
     public static final long HORAS      = 60 * MINUTOS;
     public static final long DIAS       = 24 * HORAS;
-    public static final long EXPIRATION = 2 * MINUTOS;
+    public static final long EXPIRATION = 1 * DIAS;
 
     public static final String ISSUER   = "*IsiFLIX*";
 
