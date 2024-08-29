@@ -3,6 +3,7 @@ package br.com.isiflix.salutar.service.ficha;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.isiflix.salutar.model.Midia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +21,22 @@ public class FichaServiceImpl implements IFichaService {
 		// TODO Auto-generated method stub
 		nova.setUuid(UUID.randomUUID().toString());
 		nova.setAtivo(1);
+		for (Midia midia: nova.getMidias()) {
+			midia.setFicha(nova);
+		}
 		return dao.save(nova);
 	}
 
 	@Override
 	public FichaPaciente alterar(FichaPaciente ficha) {
-		// TODO Auto-generated method stub
+		FichaPaciente tmp = dao.findById(ficha.getIdFicha()).orElse(null);
+		if (tmp != null) {
+			tmp.setAtivo(ficha.getAtivo());
+		}
+		for (Midia midia: ficha.getMidias()) {
+			midia.setFicha(ficha);
+		}
+
 		return dao.save(ficha);
 	}
 
@@ -52,5 +63,4 @@ public class FichaServiceImpl implements IFichaService {
 		}
 		return false;
 	}
-
 }

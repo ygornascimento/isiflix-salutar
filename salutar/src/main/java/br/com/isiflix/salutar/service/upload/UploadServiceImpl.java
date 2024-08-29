@@ -19,7 +19,7 @@ public class UploadServiceImpl implements IUploadService {
 		// TODO Auto-generated method stub
 		try {
 			System.out.println("DEBUG - Realizando Upload do arquivo: "+file.getOriginalFilename());
-			String destinationFolder = "/Users/ynascimento/workspace";
+			String destinationFolder = "/Users/ynascimento/workspace/isiflix-salutar-front-end/salutar/public/img";
 			String extension  = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 			String newFileName = UUID.randomUUID() +extension;
 			
