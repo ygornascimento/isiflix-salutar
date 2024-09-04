@@ -51,6 +51,9 @@ public class FichaPaciente {
 	
 	@Column(name="diagnostico_clinico", columnDefinition="TEXT")
 	private String diagnosticoClinico;
+
+	@Column(name="evolucao_clinica", columnDefinition="TEXT")
+	private String evolucaoClinica;
 	
 	@Column(name="queixaPrincipal", columnDefinition="TEXT")
 	private String queixaPrincipal;
@@ -180,6 +183,14 @@ public class FichaPaciente {
 
 	public void setDiagnosticoClinico(String diagnosticoClinico) {
 		this.diagnosticoClinico = diagnosticoClinico;
+	}
+
+	public String getEvolucaoClinica() {
+		return evolucaoClinica;
+	}
+
+	public void setEvolucaoClinica(String evolucaoClinica) {
+		this.evolucaoClinica = evolucaoClinica;
 	}
 
 	public String getQueixaPrincipal() {
